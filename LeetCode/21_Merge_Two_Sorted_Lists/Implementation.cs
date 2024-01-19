@@ -28,7 +28,14 @@ public class Implementation
             {
                 if (currNode1 == null)
                 {
-                    lastPushedNode.next = currNode2;
+                    if(head == null)
+                    {
+                        head = currNode2;
+                    }
+                    else
+                    {
+                        lastPushedNode.next = currNode2;
+                    }
                     lastPushedNode = currNode2;
                     currNode2 = currNode2.next;
                     continue;
@@ -36,39 +43,42 @@ public class Implementation
 
                 if (currNode2 == null)
                 {
-                    lastPushedNode.next = currNode1;
-                    lastPushedNode = currNode1;
-                    currNode1 = currNode1.next;
-                    continue;
-                }
-
-                if (head == null)
-                {
-                    if (currNode1.val <= currNode2.val)
+                    if (head == null)
                     {
                         head = currNode1;
-                        lastPushedNode = currNode1;
-                        currNode1 = currNode1.next;
                     }
                     else
                     {
-                        head = currNode2;
-                        lastPushedNode = currNode2;
-                        currNode2 = currNode2.next;
+                        lastPushedNode.next = currNode1;
                     }
-
+                    lastPushedNode = currNode1;
+                    currNode1 = currNode1.next;
                     continue;
                 }
 
                 if (currNode1.val <= currNode2.val)
                 {
-                    lastPushedNode.next = currNode1;
+                    if (head == null)
+                    {
+                        head = currNode1;
+                    }
+                    else
+                    {
+                        lastPushedNode.next = currNode1;
+                    }
                     lastPushedNode = currNode1;
                     currNode1 = currNode1.next;
                 }
                 else
                 {
-                    lastPushedNode.next = currNode2;
+                    if (head == null)
+                    {
+                        head = currNode2;
+                    }
+                    else
+                    {
+                        lastPushedNode.next = currNode2;
+                    }
                     lastPushedNode = currNode2;
                     currNode2 = currNode2.next;
                 }
